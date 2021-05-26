@@ -1,17 +1,22 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="max-w-2xl mx-auto py-16">
+    <p>Is it Idle? - <span class="font-bold">{{ isIdle }}</span></p>
+    <ModalIdle v-if="isIdle" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import ModalIdle from './components/ModalIdle.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    ModalIdle,
+  },
+  computed: {
+    isIdle() {
+      return this.$store.state.idleVue.isIdle;
+    },
   },
 };
 </script>
